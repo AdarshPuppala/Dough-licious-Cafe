@@ -236,8 +236,6 @@ class Chocolate(models.Model):
     def __str__(self):
         return self.name
 
-from django.db import models
-
 class BostonCream(models.Model):
     FLAVOR_CHOICES = [
         ('Boston Cream', 'Boston Cream'),
