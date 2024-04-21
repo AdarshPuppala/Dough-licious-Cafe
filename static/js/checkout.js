@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <td>${item.quantity}</td>
                 <td>${item.totalPrice ? '$' + item.totalPrice.toFixed(2) : 'N/A'}</td>
             `;
-            cartItemsTable.appendChild(row);
+            cartItemsTable.appendChild(row); //append the latest row to the checkout table
 
             totalItems += item.quantity;
             totalPriceValue += item.totalPrice || 0; // Use 0 if totalPrice is not defined
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.removeItem("cartItems");
         window.location.href = "/thankyou/";
     };
-    
+
     const submitOrderBtn = document.getElementById("submit-order-btn");
     submitOrderBtn.addEventListener("click", function(event) {
         clearCart();
