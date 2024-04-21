@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fba282;
+    background-image: url(/static/img/pink-border.png);
+    background-repeat: repeat-x;
+    background-position: left top; 
+    height: 50px; 
+    background-size: auto 100%;
+}
+
+.container {
+    max-width: 600px;
+    margin: 18% auto; 
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+p {
+    text-align: center;
+    color: #666;
+}
+
+.confirmation {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.pickup-time {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+}
+
+.return-home{
+    background-color: #ffdcab;
+    color: black;
+    border: 0px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 250px;
+    font-family: Bradley Hand, cursive;
+}
+
+.return-home:hover {
+    background-color: #ffbe63;
+    border-color: none;
+    transform: scale(1.2);
+    box-shadow: 0 5px #ffdcab;
+  }
