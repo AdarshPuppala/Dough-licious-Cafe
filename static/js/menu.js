@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         btn.addEventListener("click", function(event) {  
             // Retrieve selected item details
             const cardBody = btn.closest(".menu-card-body");
-            
+
             const flavorSelect = cardBody.querySelector(".flavor-select");
             const selectedFlavor = flavorSelect.value;
 
@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Retrieve price data associated with the selected item
             const pricesData = cardBody.parentElement.dataset.prices.replace(/'/g, '"');
+
             const prices = JSON.parse(pricesData);
 
             const price = prices[selectedSize];
@@ -43,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Check if the price is valid
             totalPrice = price * quantity;
-            console.log("Total Price:", totalPrice);
             
             // Check if the menu item is a latte
             let productType = "";
@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 totalPrice: totalPrice
             };
 
+            console.log(item);
             // Add item to local storage
             addToCart(item);
 
