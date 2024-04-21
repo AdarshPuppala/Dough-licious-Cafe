@@ -86,7 +86,7 @@
         </div>
         <!-- LATTE -->
         <div class="coffee-menu card-group">
-          <div class="latte-card card" data-prices="{{latte_prices | safe}}">
+          <div class="latte-card card" data-prices="{{latte_prices}}">
             <img
               src="{% static 'img/latte.jpeg' %}"
               class="card-img-top"
@@ -155,10 +155,7 @@
             </div>
           </div>
           <!-- MACCHIATO -->
-          <div
-            class="macchiato-card card"
-            data-prices="{{macchiato_prices | safe}}"
-          >
+          <div class="macchiato-card card" data-prices="{{macchiato_prices}}">
             <img
               src="{% static 'img/macchiato.jpeg' %}"
               class="card-img-top"
@@ -182,7 +179,7 @@
                         id="flavor-select"
                         class="form-select flavor-select"
                       >
-                        {% for flavor,flavor_name in macchiato_flavor_choices%}
+                        {% for flavor, flavor_name in macchiato_flavor_choices%}
                         <option value="{{ flavor }}">{{ flavor_name }}</option>
                         {% endfor %}
                       </select>
@@ -228,10 +225,7 @@
             </div>
           </div>
           <!-- CUPPUCCINO -->
-          <div
-            class="cappuccino-card card"
-            data-prices="{{cappuccino_prices | safe}}"
-          >
+          <div class="cappuccino-card card" data-prices="{{cappuccino_prices}}">
             <img
               src="{% static 'img/cappuccino.jpeg' %}"
               class="card-img-top"
@@ -301,10 +295,7 @@
             </div>
           </div>
           <!-- ESPRESSO -->
-          <div
-            class="espresso-card card"
-            data-prices="{{espresso_prices | safe}}"
-          >
+          <div class="espresso-card card" data-prices="{{espresso_prices}}">
             <img
               src="{% static 'img/espresso.jpeg' %}"
               class="card-img-top"
