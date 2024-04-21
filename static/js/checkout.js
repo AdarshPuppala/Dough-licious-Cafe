@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const totalItemsCount = document.getElementById("total-items-count");
         const totalPrice = document.getElementById("total-price");
 
-        cartItemsTable.innerHTML = ""; // Clear previous content
+        cartItemsTable.innerHTML = ""; // Clear previous content. This prevents duplication
 
         const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
         let totalItems = 0;
@@ -34,11 +34,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Function to clear cart items from local storage
     const clearCart = function() {
         localStorage.removeItem("cartItems");
-        // Optionally, you can redirect to the home page after clearing the cart
         window.location.href = "/thankyou/";
     };
-
-    // Add event listener to "Submit Order" button. Maybe going to delete this.
+    
     const submitOrderBtn = document.getElementById("submit-order-btn");
     submitOrderBtn.addEventListener("click", function(event) {
         clearCart();
