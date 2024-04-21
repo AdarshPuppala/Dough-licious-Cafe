@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         cartItemsTable.innerHTML = ""; // Clear previous content. This prevents duplication
 
         const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        console.log(cartItems);
         let totalItems = 0;
         let totalPriceValue = 0;
 
