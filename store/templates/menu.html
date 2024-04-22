@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'img/bakery-logo.png' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'styles/menu.css' %}"
+    />
+    <script src="{% static 'js/menu.js' %}"></script>
+  </head>
+  <body>
+    <div class="discount">
+      <h6>Try our new S'more flavor today!!!</h6>
+    </div>
+    <main class="d-flex flex-row">
+      <div
+        class="sidebar col-3 d-flex flex-column flex-shrink-0 sticky-top vh-100 align-items-center"
+      >
+        <div class="d-flex justify-content-center">
+          <img
+            class="bakery-logo"
+            src="{% static 'img/bakery-logo.png' %}"
+            alt="Bakery Logo"
+          />
+        </div>
+        <button
+          class="sidebar-button"
+          onclick="location.href='{% url 'index' %}'"
+        >
+          Home
+        </button>
+        <button
+          class="sidebar-button sidebar-active"
+          onclick="location.href='{% url 'menu' %}'"
+        >
+          Order
+        </button>
+        <button
+          class="sidebar-button"
+          onclick="location.href='{% url 'checkout' %}'"
+        >
+          Cart
+        </button>
+      </div>
+      <div class="main-content col d-flex flex-column align-items-center">
+        <div class="coffee-card card text-center">
+          <div class="card-body">
+            <h2 class="card-title">☕️Coffee☕️</h2>
+            <br />
+            <a
+              href="#"
+              class="order-coffee-btn btn btn-primary"
+              onclick="scrollToMenu('coffee-menu')"
+              >Order Coffee Now 😋</a
+            >
+          </div>
+        </div>
+        <div class="donut-card card text-center">
+          <div class="card-body">
+            <h2 class="card-title">🍩Donut🍩</h2>
+            <br />
+            <a
+              href="#"
+              class="order-donut-btn btn btn-primary"
+              onclick="scrollToMenu('donut-menu')"
+              >Order Donut Now 😋</a
+            >
+          </div>
+        </div>
+        <div id="coffee-menu" class="coffee-menu-title">
+          <h1>Our Coffee</h1>
+        </div>
+        <!-- LATTE -->
+        <div class="coffee-menu card-group">
+          <div class="latte-card card" data-prices="{{latte_prices}}">
+            <img
+              src="{% static 'img/latte.jpeg' %}"
+              class="card-img-top"
+              alt="Latte"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Latte</h5>
+              <p class="card-text">
+                A milk coffee that is made up of one or two shots of espresso,
+                steamed milk and a final, thin layer of frothed milk on top
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="flavor-col col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor, flavor_name in latte_flavor_choices %}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in latte_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty1" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty1"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- MACCHIATO -->
+          <div class="macchiato-card card" data-prices="{{macchiato_prices}}">
+            <img
+              src="{% static 'img/macchiato.jpeg' %}"
+              class="card-img-top"
+              alt="Macchiato"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Macchiato</h5>
+              <p class="card-text">
+                An espresso coffee drink, topped with a small amount of foamed
+                or steamed milk to allow the taste of the espresso to still
+                shine through
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="flavor-col col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor, flavor_name in macchiato_flavor_choices%}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in macchiato_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty1" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty1"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- CUPPUCCINO -->
+          <div class="cappuccino-card card" data-prices="{{cappuccino_prices}}">
+            <img
+              src="{% static 'img/cappuccino.jpeg' %}"
+              class="card-img-top"
+              alt="Cappuccino"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Cappuccino</h5>
+              <p class="card-text">
+                A hot coffee drink made with espresso, steamed milk, and milk
+                foam, layered on top of each other. The perfect balance of
+                espresso, steamed milk, and foam
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="flavor-col col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor,flavor_name in cappuccino_flavor_choices%}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in cappuccino_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty1" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty1"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ESPRESSO -->
+          <div class="espresso-card card" data-prices="{{espresso_prices}}">
+            <img
+              src="{% static 'img/espresso.jpeg' %}"
+              class="card-img-top"
+              alt="Espresso"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Espresso Shot</h5>
+              <p class="menu-card-text card-text">
+                A concentrated, full-flavored coffee beverage that's made from
+                forcing pressurized water through finely-ground coffee beans.
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor, flavor_name in espresso_flavor_choices %}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in espresso_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty1" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty1"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="donut-menu" class="coffee-menu-title">
+          <h1>Regular Donut</h1>
+        </div>
+        <div class="donut-menu card-group">
+          <!-- ORIGINAL GLAZE -->
+          <div class="original-card card" data-prices="{{ original_prices }}">
+            <img
+              src="{% static 'img/original.jpeg' %}"
+              class="card-img-top"
+              alt="original"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Original Glaze</h5>
+              <p class="card-text">
+                Indulge in the classic sweetness of our Original Glaze Donut.
+                Made with our signature fluffy dough, this donut is fried to
+                perfection and delicately coated in a luscious glaze
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor, flavor_name in original_flavor_choices %}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in original_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty1" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty1"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STRAWBERRY GLAZE -->
+          <div
+            class="strawberry-card card"
+            data-prices="{{ strawberry_prices}}"
+          >
+            <img
+              src="{% static 'img/strawberry-glaze.jpeg' %}"
+              class="card-img-top"
+              alt="strawberry"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Strawberry Glaze</h5>
+              <p class="card-text">
+                A fluffy, freshly baked doughnut topped with a luscious
+                strawberry glaze
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor,flavor_name in strawberry_flavor_choices%}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in strawberry_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty2" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty2"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- VANILLA GLAZE -->
+          <div class="vanilla-card card" data-prices="{{ vanilla_prices }}">
+            <img
+              src="{% static 'img/vanilla-glaze.jpeg' %}"
+              class="card-img-top"
+              alt="vanilla"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Vanilla Glaze</h5>
+              <p class="card-text">
+                A fluffy, freshly baked doughnut topped with a rich vanilla
+                glaze
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor, flavor_name in vanilla_flavor_choices %}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in vanilla_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty3" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty3"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHOCOLATE GLAZE -->
+          <div class="chocolate-card card" data-prices="{{ chocolate_prices }}">
+            <img
+              src="{% static 'img/chocolate-glaze.jpeg' %}"
+              class="card-img-top"
+              alt="chocolate"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Chocolate Glaze</h5>
+              <p class="card-text">
+                A fluffy, freshly baked donut coated with a glossy layer of
+                decadent chocolate glaze
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor,flavor_name in chocolate_flavor_choices%}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in chocolate_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty5" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty5"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speicalty Donuts -->
+        <div class="coffee-menu-title">
+          <h1>Specialty Donuts</h1>
+        </div>
+        <div class="donut-menu card-group">
+          <!-- BOSTON CREAM -->
+          <div
+            class="bostonCream-card card"
+            data-prices="{{ boston_cream_prices }}"
+          >
+            <img
+              src="{% static 'img/boston-cream.jpeg' %}"
+              class="card-img-top"
+              alt="bostonCream"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Boston Cream</h5>
+              <p class="card-text">
+                A fluffy yeast-raised doughnut filled to the brim with smooth,
+                creamy custard, and topped with a generous drizzle of rich
+                chocolate ganache
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {%for flavor,flavor_name in boston_c_flavor_choices%}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in boston_cream_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty6" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty6"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- JELLY -->
+          <div class="jelly-card card" data-prices="{{ jelly_prices }}">
+            <img
+              src="{% static 'img/jelly.jpeg' %}"
+              class="card-img-top"
+              alt="jelly"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Jelly</h5>
+              <p class="card-text">
+                A raised donut that's filled with strawberry jam or jelly, and
+                topped with powdered sugar
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor, flavor_name in jelly_flavor_choices %}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in jelly_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty1" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty1"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MAPLE BACON -->
+          <div
+            class="mapleBacon-card card"
+            data-prices="{{ maple_bacon_prices }}"
+          >
+            <img
+              src="{% static 'img/maple-bacon.jpeg' %}"
+              class="card-img-top"
+              alt="mapleBacon"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Maple Bacon</h5>
+              <p class="card-text">
+                Pastry glazed with rich maple syrup, then adorned with crispy,
+                savory bacon pieces.
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor,flavor_name in maple_b_flavor_choices%}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in maple_bacon_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty1" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty1"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- More Speicalty Donut -->
+        <div class="donut-menu card-group">
+          <!-- S'MORE -->
+          <div class="smore-card card" data-prices="{{ smore_prices }}">
+            <img
+              src="{% static 'img/smore.jpeg' %}"
+              class="card-img-top"
+              alt="smore"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">S'more</h5>
+              <p class="card-text">
+                Baked graham cracker cake donuts topped with chocolate ganache,
+                toasted vanilla meringue, and crushed graham crackers!
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor, flavor_name in smore_flavor_choices %}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in smore_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty1" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty1"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CRULLER -->
+          <div class="cruller-card card" data-prices="{{ cruller_prices }}">
+            <img
+              src="{% static 'img/cruller.jpeg' %}"
+              class="card-img-top"
+              alt="cruller"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Cruller</h5>
+              <p class="card-text">
+                A cruller is a sweet, twisted donut made from a special dough.
+                It's fried until golden and has a soft inside with a slightly
+                crispy outside
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor, flavor_name in cruller_flavor_choices %}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select id="size-select" class="form-select size-select">
+                        {% for size, size_name in cruller_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="qty1" class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="qty1"
+                          name="quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PBNJ -->
+          <div class="pbnj-card card" data-prices="{{ pbnj_prices }}">
+            <img
+              src="{% static 'img/pbnj.jpeg' %}"
+              class="card-img-top"
+              alt="pbnj"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">
+                Peanut Butter and Jelly
+              </h5>
+              <p class="card-text">
+                Our Peanut Butter and Jelly Donut is a delightful treat that
+                combines the smooth, nutty flavor of peanut butter with the
+                sweet tanginess of jelly
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="pbnj-flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="pbnj-flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor, flavor_name in pbnj_flavor_choices %}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="pbnj-size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select
+                        id="pbnj-size-select"
+                        class="form-select size-select"
+                      >
+                        {% for size, size_name in pbnj_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="pbnj-qty"
+                        class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="pbnj-qty"
+                          name="pbnj-quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BLUEBERRY CAKE -->
+          <div
+            class="blueberry-cake-card card"
+            data-prices="{{ bb_cake_prices }}"
+          >
+            <img
+              src="{% static 'img/blueberryCake.jpeg' %}"
+              class="card-img-top"
+              alt="blueberry-cake"
+            />
+            <div class="menu-card-body card-body">
+              <h5 class="menu-card-title card-title">Blueberry Cake</h5>
+              <p class="card-text">
+                A moist and tender cake base infused with juicy blueberries,
+                creating a perfect balance of sweetness and tanginess. Topped
+                with a light glaze, it offers a satisfying crunch on the outside
+                while remaining soft and fluffy on the inside.
+              </p>
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div class="dropdown">
+                      <label for="blueberry-flavor-select" class="flavor-label"
+                        >Flavor:</label
+                      >
+                      <select
+                        id="blueberry-flavor-select"
+                        class="form-select flavor-select"
+                      >
+                        {% for flavor,flavor_name in bb_cake_flavor_choices%}
+                        <option value="{{ flavor }}">{{ flavor_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="blueberry-size-select"
+                        class="quantity col-form-label col-auto"
+                        >Size:</label
+                      >
+                      <select
+                        id="blueberry-size-select"
+                        class="form-select size-select"
+                      >
+                        {% for size, size_name in bb_cake_size_choices %}
+                        <option value="{{ size }}">{{ size_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <label
+                        for="blueberry-qty"
+                        class="quantity col-form-label col-auto"
+                        >Quantity:</label
+                      >
+                      <div class="quantity-control col-sm-6">
+                        <input
+                          type="number"
+                          id="blueberry-qty"
+                          name="blueberry-quantity"
+                          class="form-control"
+                          value="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button class="add-to-cart-btn btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/menu.js' %}"></script>
+  </body>
+</html>
