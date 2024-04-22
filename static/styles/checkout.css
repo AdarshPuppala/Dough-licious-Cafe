@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: #fba282;
+    background-color: #ffc0a7;
   }
   
   /*SPEACIAL DEAL ANNOUNCEMENT*/
@@ -74,4 +74,8 @@ body {
   border-color: none;
   transform: scale(1.2);
   box-shadow: 0 5px #fa8686;
+}
+
+h2{
+  color: #563517;
 }
