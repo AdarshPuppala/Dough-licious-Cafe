@@ -1,5 +1,9 @@
-body {
-  margin: 0;
+body, html {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
 }
 
 /*SPEACIAL DEAL ANNOUNCEMENT*/
@@ -12,7 +16,7 @@ body {
   font-style: italic;
 }
 main {
-  background-color: #fba282;
+  background-color: #ffcdba;
 }
 /* VERTICAL NAV BAR */
 .sidebar {
@@ -62,13 +66,16 @@ main {
   background-color: #fbdfd8f1;
   border-radius: 10px;
   padding: 3px;
-  font-family: Chalkduster, fantasy;
+  /* font-family: Chalkduster, fantasy; */
+  font-family: Bradley Hand, cursive;
 }
 
 .donut-card {
-  background-image: url(/static/img/CoffeeBean.jpg);
+  background-image: url(/static/img/donut.png);
   padding-right: 40%;
   padding-left: 40%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .order-donut-btn {
@@ -110,7 +117,8 @@ main {
 /* Coffee Menu */
 .coffee-menu-title {
   background-color: #fbdfd8f1;
-  font-family: Marker Felt, fantasy;
+  /* font-family: Marker Felt, fantasy; */
+  font-family: Bradley Hand, cursive;
   margin-top: 30px;
   padding-left: 30%;
   padding-right: 30%;
@@ -121,7 +129,7 @@ main {
   --b: 6px;
   --w: 360px;
   --g: 15px;
-  --c: #754332;
+  --c: #563517;
 
   width: fit-content;
   padding: 0 1em;
@@ -144,11 +152,19 @@ main {
 
 .menu-card-body {
   background-color: #9c6f44;
-  border-radius: 10px;
   padding: 3px;
   color: white;
-  font-family: Jazz LET, fantasy;
+  /* font-family: Jazz LET, fantasy; */
+  font-family: Bradley Hand, cursive;
+  border-radius: 0px;
+  border-color: #563517;
 }
+
+img {
+  width: 200px;
+  height: 200px;
+  object-fit:cover;
+} 
 
 .menu-card-title {
   background-color: #563517;
@@ -157,44 +173,64 @@ main {
 
 .coffee-menu {
   margin-top: 20px;
+  border-color: #563517;
 }
 
 /* Donut Menu */
 .donut-menu {
   margin-top: 20px;
+  border-color: #563517;
 }
 
 .quantity{
-  margin-top: 5px;
-  background-color:#565E64 ;
-  border-radius: 10px;
-  padding: 10px;
+  margin-top: 10px;
+  margin-right: 35px;
+  background-color:#563517;
+  border-radius: 5px;
+  padding: 3px;
 }
 
 .quantity-control{
-  padding-top: 10px;
-  margin-left: 30px; 
+  padding-top: 2px;
+  margin-left: 5px; 
+  width:60px;
+}
+
+.flavor-label{ /*Type*/
+  background-color: #563517;
+  padding: 3px;
+  border-radius: 5px;
+  margin-bottom: 2px;
+}
+.flavor-select { /*Type*/
+  padding-top: 2px;
+  margin-left: 5px; 
+}
+
+.form-select {
+  padding-top: 2px;
+  margin-right: 20px; 
+  margin-top: 2px;
 }
 
 .add-to-cart-btn{
   margin-top: 10px;
   margin-right: 130px;
+  margin-bottom: 10px;
   background-color: #ffdcab;
-  border-color: #ffdcab;;
+  border-color: #ffdcab;
+  color:#563517;
+  width:100%;
 }
 
 .add-to-cart-btn:hover{
   background-color: #ffbe63 ;
+  color:#563517;
+  border-color: #563517;
 }
 
 .add-to-cart-btn.clicked {
   background-color: #ffbe63;
-}
-
-.flavor-label{
-  background-color: #565E64;
-  padding: 10px;
-  border-radius: 10px;
 }
 
 .popup-message {
@@ -202,8 +238,8 @@ main {
   top: 70%;
   left: 13%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
   padding: 20px;
   border-radius: 10px;
   z-index: 9999;
