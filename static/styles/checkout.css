@@ -48,11 +48,30 @@ body {
     background-color: #ffbe63;
   }
 
+  #submit-order-btn{
+    background-color: #ffdcab;
+    color: black;
+    border: 0px;
+    font-family: Bradley Hand, cursive;
+  }
   
-.footer,
-.footer a {
-  background-color: #754332;
-  color: white;
-  font-size: 12px;
-  padding: 4px;
+  #submit-order-btn:hover {
+    background-color: #ffbe63;
+    border-color: none;
+    transform: scale(1.2);
+    box-shadow: 0 5px #ffdcab;
+}
+
+#clear-cart-btn{
+  background-color: #fa8686;
+  color: black;
+  border: 0px;
+  font-family: Bradley Hand, cursive;
+}
+
+#clear-cart-btn:hover {
+  background-color: #f94f4f;
+  border-color: none;
+  transform: scale(1.2);
+  box-shadow: 0 5px #fa8686;
 }
