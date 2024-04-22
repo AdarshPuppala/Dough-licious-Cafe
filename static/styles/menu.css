@@ -118,29 +118,16 @@ main {
 }
 
 .coffee-menu-title {
-  --b: 6px;
-  --w: 360px;
-  --g: 15px;
-  --c: #754332;
-
   width: fit-content;
   padding: 0 1em;
   line-height: 1.6em;
-  border: 1px solid;
+  border: 1px solid #754332; /* Use the color value without "var()" */
+  background-color: #754332; /* Use the color value without "()" */
   color: #fff;
-  background: conic-gradient(from 45deg at left, var(--c) 25%, #0000 0) 0,
-    conic-gradient(from -135deg at right, var(--c) 25%, #0000 0) 100%;
-  background-size: 51% 100%;
-  background-origin: border-box;
-  background-repeat: no-repeat;
-  border-image: linear-gradient(
-      #0000 calc(50% - var(--b) / 2),
-      var(--c) 0 calc(50% + var(--b) / 2),
-      #0000 0
-    )
-    1/0 var(--w) / calc(var(--w) + var(--g));
   margin-inline: auto;
+  border-radius: 10px;
 }
+
 
 .menu-card-body {
   background-color: #9c6f44;
