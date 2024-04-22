@@ -38,8 +38,18 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "/thankyou/";
     };
 
+    const clearLocalCart = function() {
+        localStorage.removeItem("cartItems");
+        window.location.href = "/checkout/";
+    }
+
     const submitOrderBtn = document.getElementById("submit-order-btn");
     submitOrderBtn.addEventListener("click", function(event) {
         clearCart();
+    });
+
+    const clearCartBtn = document.getElementById("clear-cart-btn");
+    clearCartBtn.addEventListener("click", function(event) {
+        clearLocalCart();
     });
 });
