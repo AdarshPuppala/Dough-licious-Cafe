@@ -3,7 +3,11 @@ body, html {
   height: 100%;
   padding: 0px;
   margin: 0px;
+}
+
+.container {
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /*SPEACIAL DEAL ANNOUNCEMENT*/
@@ -129,8 +133,8 @@ main {
   width: fit-content;
   padding: 0 1em;
   line-height: 1.6em;
-  border: 1px solid #754332; /* Use the color value without "var()" */
-  background-color: #754332; /* Use the color value without "()" */
+  border: 1px solid #754332; 
+  background-color: #754332; 
   color: #fff;
   margin-inline: auto;
   border-radius: 10px;
