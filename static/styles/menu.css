@@ -126,14 +126,6 @@ main {
 }
 
 .coffee-menu-title {
-<<<<<<< HEAD
-  --b: 6px;
-  --w: 360px;
-  --g: 15px;
-  --c: #563517;
-
-=======
->>>>>>> 27a2750d5beddbbc9c1ac009a9f37f3d68fddb8a
   width: fit-content;
   padding: 0 1em;
   line-height: 1.6em;
